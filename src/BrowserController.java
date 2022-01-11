@@ -22,38 +22,6 @@ public class BrowserController implements Initializable {
     @FXML
     private TabPane tabPane;
 
-    @FXML
-    private AnchorPane tabContent;
-
-    @FXML
-    private TextField barRecherche;
-
-    @FXML
-    private Button buttonGo;
-
-    @FXML
-    private WebView webView;
-
-    @FXML
-    private Button buttonRe;
-
-    @FXML
-    private Button buttonZoonIn;
-
-    @FXML
-    private Button buttonZoonOut;
-
-    @FXML
-    private Button buttongoBack;
-    @FXML
-    private Button buttongoFront;
-
-    private WebHistory history;
-
-
-    private WebEngine engine;
-    private float zoomScale;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,7 +34,6 @@ public class BrowserController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 
