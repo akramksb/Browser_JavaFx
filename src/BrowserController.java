@@ -57,72 +57,19 @@ public class BrowserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        zoomScale = 1;
-        engine = webView.getEngine();
-        loadPage();
-    }
-
-    public void loadPage(){
-//        engine.load("http://www.google.com");
-        if ( barRecherche.getText().contains( "://" )  )
-            engine.load( barRecherche.getText() );
-        else
-        {
-            engine.load("https://www.google.com/search?q=" + barRecherche.getText() );
-        }
-
-        engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
-            if (newState == Worker.State.SUCCEEDED) {
-                // new page has loaded, process:
-                barRecherche.setText( engine.getLocation());
-
-            }
-        });
-    }
-
-    public void refreshPage(){
-        zoomScale = 1;
-        webView.setZoom(zoomScale);
-        engine.reload();
-    }
-
-    public void zoomIn(){
-        zoomScale += 0.25;
-        webView.setZoom(zoomScale);
-    }
-    public void zoomOut(){
-        zoomScale -= 0.25;
-        webView.setZoom(zoomScale);
-    }
-
-    public void displayHistory()
-    {
-//        history = engine.getHistory();
-//        ObservableList<WebHistory.Entry> entries = history.getEntries();
-//        for ( WebHistory.Entry entrie : entries ){
-//            System.out.println( entrie.getLastVisitedDate() + " - " + entrie.getTitle() );
-//        }
-
-        Tab tab = new Tab();
-        tab.setText( "test" );
-
-        tabPane.getTabs().add(tab);
+        Tab tab;
+        tab = tabPane.getTabs().get(0);
+        AnchorPane root = null;
         try {
-            TabPane root = FXMLLoader.load( getClass().getResource("view/browser.fxml") );
-            tab.setContent(root.getTabs().get(0).getContent() );
+            root = FXMLLoader.load( getClass().getResource("view/tabContent.fxml") );
+            tab.setContent( root );
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
-
-    public void goBack()
-    {
 
     }
-    public void goFront()
-    {
 
-    }
+
 
 }

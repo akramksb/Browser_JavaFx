@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        TabPane root = FXMLLoader.load( getClass().getResource("view/browser.fxml") );
+        TabPane root = FXMLLoader.load( getClass().getResource("view/browser1.fxml") );
         Scene scene = new Scene( root );
         primaryStage.setScene( scene );
         primaryStage.show();
