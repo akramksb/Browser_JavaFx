@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +38,27 @@ public class BrowserController implements Initializable {
 
     }
 
+    public void addTab(){
+        int tabPos = tabPane.getTabs().size()-1;
+        if ( tabPos == 0 )
+        {
+            ((Stage) tabPane.getScene().getWindow()).close();
+            return;
+        }
 
+
+
+        Tab tab = new Tab();
+        tab.setText( "New Tab" );
+
+        tabPane.getTabs().add(tabPos, tab);
+        tabPane.getSelectionModel().select(tabPos);
+        try {
+            AnchorPane root = FXMLLoader.load( getClass().getResource("view/tabContent.fxml") );
+            tab.setContent(root );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
