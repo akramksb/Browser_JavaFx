@@ -1,0 +1,12 @@
+#tabPane{
+
+}
+
+#addTabBtn
+{
+    -fx-background-color: transparent;
+}
+#addTabBtn:hover
+{
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}

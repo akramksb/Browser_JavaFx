@@ -71,11 +71,11 @@ public class TabController implements Initializable {
             engine.load("https://www.google.com/search?q=" + barRecherche.getText() );
         }
 
+
         engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
                 // new page has loaded, process:
                 barRecherche.setText( engine.getLocation());
-
             }
         });
     }
@@ -97,32 +97,24 @@ public class TabController implements Initializable {
 
     public void displayHistory()
     {
-//        history = engine.getHistory();
-//        ObservableList<WebHistory.Entry> entries = history.getEntries();
-//        for ( WebHistory.Entry entrie : entries ){
-//            System.out.println( entrie.getLastVisitedDate() + " - " + entrie.getTitle() );
-//        }
-
-//        Tab tab = new Tab();
-//        tab.setText( "test" );
-//
-//        tabPane.getTabs().add(tab);
-//        try {
-//            TabPane root = FXMLLoader.load( getClass().getResource("view/browser.fxml") );
-//            tab.setContent(root.getTabs().get(0).getContent() );
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        history = engine.getHistory();
+        ObservableList<WebHistory.Entry> entries = history.getEntries();
+        for ( WebHistory.Entry entrie : entries ){
+            System.out.println( entrie.getLastVisitedDate() + " - " + entrie.getUrl() );
+        }
 
     }
 
     public void goBack()
     {
+        history = engine.getHistory();
+        history.go(-1);
 
     }
-    public void goFront()
+    public void goForward()
     {
-
+        history = engine.getHistory();
+        history.go(1);
     }
 
 }

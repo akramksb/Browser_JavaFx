@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="tabContent" minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TabController">
    <children>
-      <WebView fx:id="webView" layoutY="53.0" prefHeight="318.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.80000000000001" />
+      <WebView fx:id="webView" layoutY="53.0" prefHeight="200.0" prefWidth="590.0" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
       <TextField fx:id="barRecherche" onAction="#loadPage" prefHeight="26.0" prefWidth="554.0" />
       <Button fx:id="buttonGo" layoutY="26.0" mnemonicParsing="false" onAction="#loadPage" text="Go" />
       <Button fx:id="buttonRe" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#refreshPage" text="Re" />
@@ -15,6 +15,6 @@
       <Button fx:id="buttonZoonIn" layoutX="83.0" layoutY="26.0" mnemonicParsing="false" onAction="#zoomIn" text="+" />
       <Button fx:id="buttonHistory" layoutX="130.0" layoutY="26.0" mnemonicParsing="false" onAction="#displayHistory" text="History" />
       <Button fx:id="buttongoBack" layoutX="548.0" layoutY="26.0" mnemonicParsing="false" onAction="#goBack" text="&lt;" />
-      <Button fx:id="buttongoFront" layoutX="573.0" layoutY="26.0" mnemonicParsing="false" onAction="#goFront" text="&gt;" />
+      <Button fx:id="buttongoFront" layoutX="573.0" layoutY="26.0" mnemonicParsing="false" onAction="#goForward" text="&gt;" />
    </children>
 </AnchorPane>

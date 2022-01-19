@@ -46,8 +46,6 @@ public class BrowserController implements Initializable {
             return;
         }
 
-
-
         Tab tab = new Tab();
         tab.setText( "New Tab" );
 
