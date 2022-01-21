@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 
-<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@StyleSheets/styleTab.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BrowserController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@StyleSheets/styleTab.css"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="BrowserController">
   <tabs>
     <Tab styleClass="tabe" text="Untitled Tab 2" />
       <Tab fx:id="addTabBtn" onSelectionChanged="#addTab" text="+" />
