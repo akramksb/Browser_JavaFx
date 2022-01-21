@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
@@ -23,6 +24,7 @@ public class BrowserController implements Initializable {
     @FXML
     private TabPane tabPane;
 
+    private MetierBrowser metierBrowser = new MetierBrowser();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -32,6 +34,9 @@ public class BrowserController implements Initializable {
         try {
             root = FXMLLoader.load( getClass().getResource("view/tabContent.fxml") );
             tab.setContent( root );
+
+            metierBrowser.createHistory();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
