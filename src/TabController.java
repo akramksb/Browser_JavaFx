@@ -3,11 +3,13 @@ import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
@@ -115,6 +117,26 @@ public class TabController implements Initializable {
     {
         history = engine.getHistory();
         history.go(1);
+    }
+
+    public void print() {
+
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.NA_LETTER, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
+        double scaleX = pageLayout.getPrintableWidth() / webView.getBoundsInParent().getWidth();
+        double scaleY = pageLayout.getPrintableHeight() / webView.getBoundsInParent().getHeight();
+        webView.getTransforms().add(new Scale(scaleX, scaleY));
+
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            boolean success = job.printPage(webView);
+            if (success) {
+                job.endJob();
+            }
+        }
+        double scaleX1 = pageLayout.getPrintableWidth() * webView.getBoundsInParent().getWidth();
+        double scaleY1 = pageLayout.getPrintableHeight() * webView.getBoundsInParent().getHeight();
+        webView.getTransforms().add(new Scale(scaleX1, scaleY1));
     }
 
 }
