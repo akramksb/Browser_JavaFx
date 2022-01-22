@@ -11,14 +11,14 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BookmarkController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BookmarkController">
    <children>
       <HBox alignment="CENTER_RIGHT" layoutX="292.0" layoutY="14.0" prefHeight="54.0" prefWidth="294.0">
          <children>
              <Button mnemonicParsing="false" text="Button" >
                  <graphic>
                      <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" >
-                         <Image url="@icons/icons8-search-16.png"/>
+                         <Image url="@../icons/icons8-search-16.png"/>
                      </ImageView>
                  </graphic>
              </Button>

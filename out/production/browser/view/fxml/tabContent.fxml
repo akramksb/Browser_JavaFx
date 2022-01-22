@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="tabContent" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TabController">
+<AnchorPane fx:id="tabContent" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabController">
    <children>
-      <WebView fx:id="webView" layoutY="53.0" prefHeight="186.0" prefWidth="388.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
+      <WebView fx:id="webView" layoutY="35.0" prefHeight="461.0" prefWidth="916.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
       <HBox prefHeight="27.0" prefWidth="916.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="27.0" prefWidth="64.0" spacing="5.0" HBox.hgrow="NEVER">
@@ -19,21 +19,21 @@
                   <Button fx:id="buttongoBack" mnemonicParsing="false" onAction="#goBack">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-backward-button-48 (1).png" />
+                           <Image url="@../icons/icons8-backward-button-48 (1).png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttongoFront" mnemonicParsing="false" onAction="#goForward">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-forward-button-48 (1).png" />
+                           <Image url="@../icons/icons8-forward-button-48 (1).png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttonRe" mnemonicParsing="false" onAction="#refreshPage">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-rotate-right-32.png" />
+                           <Image url="@../icons/icons8-rotate-right-32.png" />
                         </ImageView>
                      </graphic>
                   </Button>
@@ -42,38 +42,45 @@
             <TextField fx:id="barRecherche" onAction="#loadPage" prefHeight="26.0" prefWidth="853.0" HBox.hgrow="ALWAYS" />
             <HBox alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="200.0" spacing="5.0">
                <children>
+                  <Button fx:id="privateNavBtn" mnemonicParsing="false" onAction="#privateWindow">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../icons/icons8-browse-page-50.png" />
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Button fx:id="buttonHistory" mnemonicParsing="false" onAction="#displayHistory">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-activity-history-48.png" />
+                           <Image url="@../icons/icons8-activity-history-48.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttonPrint" mnemonicParsing="false" onAction="#print">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-print-48.png" />
+                           <Image url="@../icons/icons8-print-48.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="bookmark" mnemonicParsing="false">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-bookmark-documents-64.png" />
+                           <Image url="@../icons/icons8-bookmark-documents-64.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttonZoonOut" mnemonicParsing="false" onAction="#zoomOut">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-zoom-out-16.png" />
+                           <Image url="@../icons/icons8-zoom-out-16.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttonZoonIn" mnemonicParsing="false" onAction="#zoomIn">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@icons/icons8-zoom-in-16.png" />
+                           <Image url="@../icons/icons8-zoom-in-16.png" />
                         </ImageView>
                      </graphic>
                   </Button>
@@ -81,5 +88,6 @@
             </HBox>
          </children>
       </HBox>
+      <ProgressBar fx:id="progressBar" layoutY="27.0" prefHeight="5.0" prefWidth="916.0" progress="0.0" stylesheets="@../StyleSheets/styleTab.css" />
    </children>
 </AnchorPane>

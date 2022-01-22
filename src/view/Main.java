@@ -5,12 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
-import metier.History;
-import metier.MetierBrowser;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -19,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        TabPane root = FXMLLoader.load( getClass().getResource("/view/browser.fxml") );
+        TabPane root = FXMLLoader.load( getClass().getResource("/view/fxml/browser.fxml") );
         Scene scene = new Scene( root );
         primaryStage.setScene( scene );
         primaryStage.show();
