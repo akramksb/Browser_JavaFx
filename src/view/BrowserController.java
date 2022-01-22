@@ -28,10 +28,16 @@ public class BrowserController implements Initializable {
         tab = tabPane.getTabs().get(0);
         AnchorPane root = null;
         try {
-            root = FXMLLoader.load( getClass().getResource("/view/fxml/tabContent.fxml") );
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fxml/tabContent.fxml"));
+            root = fxmlLoader.load();
+            TabController controller = ( TabController ) fxmlLoader.getController();
+            controller.setBrowserController(this);
+
             tab.setContent( root );
 
             metierBrowser.createHistory();
+
+            metierBrowser.createBookmark();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,10 +65,11 @@ public class BrowserController implements Initializable {
             AnchorPane root = fxmlLoader.load();
             TabController controller = ( TabController ) fxmlLoader.getController();
 
+            controller.setBrowserController(this);
             if ( isPrivate )
                 controller.setPrivate(true);
 
-            tab.setContent(root );
+            tab.setContent(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
