@@ -33,5 +33,6 @@
          </graphic>
       </Button>
       <ProgressBar fx:id="progressBar" layoutY="52.0" prefHeight="5.0" prefWidth="916.0" progress="0.0" stylesheets="@StyleSheets/styleTab.css" />
+      <Button fx:id="privateNavBtn" layoutX="540.0" layoutY="26.0" mnemonicParsing="false" onAction="#privateWindow" text="private" />
    </children>
 </AnchorPane>

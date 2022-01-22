@@ -18,6 +18,8 @@ public class BrowserController implements Initializable {
     @FXML
     private TabPane tabPane;
 
+    private boolean isPrivate = false;
+
     private MetierBrowser metierBrowser = new MetierBrowser();
 
     @Override
@@ -34,7 +36,6 @@ public class BrowserController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void addTab(){
@@ -46,16 +47,30 @@ public class BrowserController implements Initializable {
         }
 
         Tab tab = new Tab();
-        tab.setText( "New Tab" );
+        if ( isPrivate )
+            tab.setText( "New Private Tab" );
+        else
+            tab.setText( "New Tab" );
 
         tabPane.getTabs().add(tabPos, tab);
         tabPane.getSelectionModel().select(tabPos);
         try {
-            AnchorPane root = FXMLLoader.load( getClass().getResource("/view/tabContent.fxml") );
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/view/tabContent.fxml" ));
+            AnchorPane root = fxmlLoader.load();
+            TabController controller = ( TabController ) fxmlLoader.getController();
+
+            if ( isPrivate )
+                controller.setPrivate(true);
+
             tab.setContent(root );
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+        addTab();
+        tabPane.getTabs().remove(0);
+    }
 }
