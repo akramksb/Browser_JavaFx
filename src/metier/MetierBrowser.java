@@ -1,8 +1,8 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+package metier;
+
+import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MetierBrowser {
@@ -44,6 +44,29 @@ public class MetierBrowser {
         saveToHistory( formatter.format(date), url );
     }
 
+    public ArrayList<History> getAllHistory( )
+    {
+        try {
+            Connection connection = SingletonConnexionDB.getConnection();
+            ArrayList<History> histories = new ArrayList<History>();
+            PreparedStatement preparedStatement = connection.prepareStatement( "SELECT * from 'history'" );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while ( resultSet.next() )
+            {
+                histories.add( new History( resultSet.getInt(1),
+                                resultSet.getString(2),
+                                resultSet.getString(3) ));
+            }
+            return histories;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public void createBookmark(){
         try {
             Connection connection = SingletonConnexionDB.getConnection();
@@ -72,6 +95,29 @@ public class MetierBrowser {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Bookmark> getAllBookmark()
+    {
+        try {
+            Connection connection = SingletonConnexionDB.getConnection();
+            ArrayList<Bookmark> bookmarks = new ArrayList<Bookmark>();
+            PreparedStatement preparedStatement = connection.prepareStatement( "SELECT * from 'bookmark'" );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while ( resultSet.next() )
+            {
+                bookmarks.add( new Bookmark( resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3) ));
+            }
+            return bookmarks;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 

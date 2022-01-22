@@ -1,28 +1,33 @@
+package view;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.print.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
+import metier.MetierBrowser;
 
-import java.io.IOException;
+import javax.swing.plaf.nimbus.State;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 public class TabController implements Initializable {
 
     @FXML
     private AnchorPane tabContent;
+
+    @FXML
+    private ProgressBar progressBar;
 
     @FXML
     private TextField barRecherche;
@@ -60,9 +65,25 @@ public class TabController implements Initializable {
 
         zoomScale = 1;
         engine = webView.getEngine();
+
+        engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+            if (newState == Worker.State.SUCCEEDED) {
+                // new page has loaded, process:
+                System.out.println( "Success!!" );
+                barRecherche.setText( engine.getLocation());
+                progressBar.setVisible(false);
+                // save to history in broeser.db
+                metierBrowser.saveToHistory(engine.getLocation());
+            }
+            if ( newState == Worker.State.RUNNING )
+            {
+                System.out.println( "hello" );
+                progressBar.setVisible(true);
+                progressBar.progressProperty().bind(engine.getLoadWorker().progressProperty());
+            }
+        });
+
         loadPage();
-
-
     }
 
     public void loadPage(){
@@ -73,16 +94,6 @@ public class TabController implements Initializable {
         {
             engine.load("https://www.google.com/search?q=" + barRecherche.getText() );
         }
-
-
-        engine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
-            if (newState == Worker.State.SUCCEEDED) {
-                // new page has loaded, process:
-                barRecherche.setText( engine.getLocation());
-                // save to history in broeser.db
-                metierBrowser.saveToHistory(engine.getLocation());
-            }
-        });
     }
 
     public void refreshPage(){
