@@ -73,6 +73,8 @@ public class TabController implements Initializable {
     private WebEngine engine;
     private float zoomScale;
 
+    private BrowserController browserController;
+
     private boolean isPrivate = false;
 
     private MetierBrowser metierBrowser = new MetierBrowser();
@@ -161,14 +163,38 @@ public class TabController implements Initializable {
 
     public void goBack()
     {
-        history = engine.getHistory();
-        history.go(-1);
+        try {
+            history = engine.getHistory();
+            history.go(-1);
+        }catch (Exception e){}
 
     }
     public void goForward()
     {
-        history = engine.getHistory();
-        history.go(1);
+        try{
+            history = engine.getHistory();
+            history.go(1);
+        }
+        catch ( Exception e){}
+    }
+
+    public void bookmarkPage(){
+        try {
+            Stage dialog = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fxml/BookmarkPopUp.fxml"));
+            AnchorPane bookmarkContent = fxmlLoader.load();
+
+            AddBookmarkConroller controller = ( AddBookmarkConroller ) fxmlLoader.getController();
+            controller.setBrowserController( browserController );
+            controller.setUrl( engine.getLocation() );
+            controller.setName( engine.getTitle() );
+
+            Scene dialogScene = new Scene( bookmarkContent );
+            dialog.setScene(dialogScene);
+            dialog.setTitle("add bookmark");
+            dialog.show();
+
+        }catch (Exception e) { e.printStackTrace(); }
     }
 
     public void print() {
@@ -220,5 +246,9 @@ public class TabController implements Initializable {
 
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;
+    }
+
+    public void setBrowserController(BrowserController browserController) {
+        this.browserController = browserController;
     }
 }
