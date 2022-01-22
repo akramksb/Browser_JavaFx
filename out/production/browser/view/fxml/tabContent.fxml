@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="tabContent" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabController">
+<AnchorPane fx:id="tabContent" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="916.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabController">
    <children>
       <WebView fx:id="webView" layoutY="35.0" prefHeight="461.0" prefWidth="916.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
       <HBox prefHeight="27.0" prefWidth="916.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -19,21 +19,21 @@
                   <Button fx:id="buttongoBack" mnemonicParsing="false" onAction="#goBack">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/icons8-backward-button-48 (1).png" />
+                           <Image url="@../icons/backward.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttongoFront" mnemonicParsing="false" onAction="#goForward">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/icons8-forward-button-48 (1).png" />
+                           <Image url="@../icons/forward.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttonRe" mnemonicParsing="false" onAction="#refreshPage">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/icons8-rotate-right-32.png" />
+                           <Image url="@../icons/rotate.png" />
                         </ImageView>
                      </graphic>
                   </Button>
@@ -45,7 +45,7 @@
                   <Button fx:id="privateNavBtn" mnemonicParsing="false" onAction="#privateWindow">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/icons8-browse-page-50.png" />
+                           <Image url="@../icons/privet.png" />
                         </ImageView>
                      </graphic>
                   </Button>
@@ -66,21 +66,21 @@
                   <Button fx:id="bookmark" mnemonicParsing="false">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/icons8-bookmark-documents-64.png" />
+                           <Image url="@../icons/bookmark.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttonZoonOut" mnemonicParsing="false" onAction="#zoomOut">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/icons8-zoom-out-16.png" />
+                           <Image url="@../icons/zo.png" />
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button fx:id="buttonZoonIn" mnemonicParsing="false" onAction="#zoomIn">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/icons8-zoom-in-16.png" />
+                           <Image url="@../icons/zI.png" />
                         </ImageView>
                      </graphic>
                   </Button>
