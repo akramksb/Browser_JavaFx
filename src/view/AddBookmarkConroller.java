@@ -31,7 +31,8 @@ public class AddBookmarkConroller {
 
     @FXML
     void showBookmarks(ActionEvent event) {
-        browserController.addTab();
+        browserController.addTabBookmark();
+
         annuler(event);
     }
 

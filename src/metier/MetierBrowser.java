@@ -55,8 +55,8 @@ public class MetierBrowser {
             while ( resultSet.next() )
             {
                 histories.add( new History( resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3) ));
+                                resultSet.getString(3),
+                                resultSet.getString(2) ));
             }
             return histories;
         }

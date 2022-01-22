@@ -152,12 +152,7 @@ public class TabController implements Initializable {
 
     public void displayHistory()
     {
-//        showpage("history");
-        history = engine.getHistory();
-        ObservableList<WebHistory.Entry> entries = history.getEntries();
-        for ( WebHistory.Entry entrie : entries ){
-            System.out.println( entrie.getLastVisitedDate() + " - " + entrie.getUrl() );
-        }
+        browserController.addTabHistory();
 
     }
 
