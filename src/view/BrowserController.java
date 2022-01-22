@@ -28,7 +28,7 @@ public class BrowserController implements Initializable {
         tab = tabPane.getTabs().get(0);
         AnchorPane root = null;
         try {
-            root = FXMLLoader.load( getClass().getResource("/view/tabContent.fxml") );
+            root = FXMLLoader.load( getClass().getResource("/view/fxml/tabContent.fxml") );
             tab.setContent( root );
 
             metierBrowser.createHistory();
@@ -55,7 +55,7 @@ public class BrowserController implements Initializable {
         tabPane.getTabs().add(tabPos, tab);
         tabPane.getSelectionModel().select(tabPos);
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/view/tabContent.fxml" ));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fxml/tabContent.fxml"));
             AnchorPane root = fxmlLoader.load();
             TabController controller = ( TabController ) fxmlLoader.getController();
 

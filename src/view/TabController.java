@@ -1,7 +1,5 @@
 package view;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
@@ -14,16 +12,13 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.transform.Scale;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import metier.MetierBrowser;
 
-import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,19 +26,22 @@ import java.util.ResourceBundle;
 public class TabController implements Initializable {
 
     @FXML
-    private AnchorPane tabContent;
+    private TextField barRecherche;
+
+    @FXML
+    private Button bookmark;
 
     @FXML
     private ProgressBar progressBar;
 
     @FXML
-    private TextField barRecherche;
-
-    @FXML
     private Button buttonGo;
 
     @FXML
-    private WebView webView;
+    private Button buttonHistory;
+
+    @FXML
+    private Button buttonPrint;
 
     @FXML
     private Button buttonRe;
@@ -56,8 +54,15 @@ public class TabController implements Initializable {
 
     @FXML
     private Button buttongoBack;
+
     @FXML
     private Button buttongoFront;
+
+    @FXML
+    private AnchorPane tabContent;
+
+    @FXML
+    private WebView webView;
 
     private WebHistory history;
 
@@ -124,7 +129,7 @@ public class TabController implements Initializable {
     {
         try {
             Stage dialog = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/view/browser.fxml" ));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fxml/browser.fxml"));
             TabPane root = fxmlLoader.load();
 
             BrowserController controller = ( BrowserController ) fxmlLoader.getController();
