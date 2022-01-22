@@ -6,17 +6,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.print.*;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
-import javafx.stage.Popup;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import metier.MetierBrowser;
 
@@ -142,6 +144,7 @@ public class TabController implements Initializable {
             dialog.setScene(dialogScene);
             dialog.setTitle("Private window");
             dialog.show();
+            dialog.getIcons().add(new Image("/view/icons/icons8-pirate-64.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,6 +152,7 @@ public class TabController implements Initializable {
 
     public void displayHistory()
     {
+//        showpage("history");
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
         for ( WebHistory.Entry entrie : entries ){
@@ -215,6 +219,30 @@ public class TabController implements Initializable {
         double scaleY1 = scaleFactor / pageLayout.getPrintableHeight();
         webView.getTransforms().add(new Scale(scaleX1, scaleY1));
     }
+
+    public void displayBookmark(){
+        try {
+//            showpage("Bookmark");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+//
+//    public void showpage(String fxml) {
+//        try {
+//            Parent parent = FXMLLoader.load(getClass().getResource("/view/fxml/" + fxml + ".fxml"));
+//            Stage stage = new Stage();
+//            Scene scene = new Scene(parent);
+//            stage.setScene(scene);
+//            stage.setResizable(false);
+//            stage.setAlwaysOnTop(true);
+//            stage.initModality(Modality.WINDOW_MODAL);
+//            stage.show();
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//
+//        }
+//    }
 
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;

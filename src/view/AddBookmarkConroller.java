@@ -24,7 +24,9 @@ public class AddBookmarkConroller {
 
     @FXML
     void enregistrer(ActionEvent event) {
+        name = nameField.getText();
         metierBrowser.saveToBookmark( name, url );
+        annuler(event);
     }
 
     @FXML

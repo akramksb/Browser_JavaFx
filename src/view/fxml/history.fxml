@@ -10,14 +10,14 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <WebView layoutX="2.0" layoutY="74.0" prefHeight="326.0" prefWidth="600.0" />
       <TextField layoutX="342.0" layoutY="22.0" prefHeight="26.0" prefWidth="213.0" text="search history" />
-       <Button layoutX="307.0" layoutY="22.0" mnemonicParsing="false">
+       <Button layoutX="307.0" layoutY="22.0" mnemonicParsing="false" >
            <graphic>
                <ImageView fx:id="search" fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                   <Image url="@../icons/icons8-search-16.png" />
+                   <Image url="@../icons/sr.png" />
                </ImageView>
            </graphic>
        </Button>
