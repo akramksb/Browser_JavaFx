@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="tabContent" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="916.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabController">
+<AnchorPane fx:id="tabContent" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="916.0" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="view.TabController">
    <children>
       <WebView fx:id="webView" layoutY="35.0" prefHeight="461.0" prefWidth="916.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
       <HBox prefHeight="27.0" prefWidth="916.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -45,7 +45,7 @@
                   <Button fx:id="privateNavBtn" mnemonicParsing="false" onAction="#privateWindow">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/privet.png" />
+                           <Image url="@../icons/icons8-pirate-64.png" />
                         </ImageView>
                      </graphic>
                   </Button>
@@ -63,10 +63,10 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="bookmark" mnemonicParsing="false">
+                  <Button fx:id="bookmark" mnemonicParsing="false" onAction="#displayBookmark">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <Image url="@../icons/bookmark.png" />
+                           <Image url="@../icons/icons8-bookmark-64.png" />
                         </ImageView>
                      </graphic>
                   </Button>
@@ -88,6 +88,6 @@
             </HBox>
          </children>
       </HBox>
-      <ProgressBar fx:id="progressBar" layoutY="27.0" prefHeight="5.0" prefWidth="916.0" progress="0.0" stylesheets="@../StyleSheets/styleTab.css" />
+      <ProgressBar fx:id="progressBar" layoutY="27.0" prefHeight="5.0" prefWidth="916.0" progress="0.0" stylesheets="@../StyleSheets/styleTab.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

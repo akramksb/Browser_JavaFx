@@ -2,23 +2,18 @@ package view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import metier.History;
 
-
-public class HistoryController {
-        @FXML
-        private TableColumn<?, ?> date;
+public class TabHistoryController {
 
         @FXML
-        private ImageView search;
+        private TableColumn<History, String> date;
 
         @FXML
-        private TableColumn<?, ?> url;
+        private AnchorPane tabContent;
 
-        public void serche(){
-
-        }
-
-
+        @FXML
+        private TableColumn<History, String> urlhstroy;
 
 }

@@ -1,27 +1,19 @@
 package view;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.layout.AnchorPane;
+import metier.Bookmark;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class BookmarkController implements Initializable {
-
-    @FXML
-    private Button BuutonSearch;
+public class TabBookmarkController {
 
     @FXML
-    private TableColumn<?, ?> nomBookmark;
+    private TableColumn<Bookmark, String> name;
 
     @FXML
-    private TableColumn<?, ?> urlBookmark;
+    private AnchorPane tabContent;
 
+    @FXML
+    private TableColumn<Bookmark, String > urlbook;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }
