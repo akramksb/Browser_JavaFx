@@ -22,16 +22,19 @@ import java.util.ResourceBundle;
 public class TabController implements Initializable {
 
     @FXML
-    private AnchorPane tabContent;
+    private TextField barRecherche;
 
     @FXML
-    private TextField barRecherche;
+    private Button bookmark;
 
     @FXML
     private Button buttonGo;
 
     @FXML
-    private WebView webView;
+    private Button buttonHistory;
+
+    @FXML
+    private Button buttonPrint;
 
     @FXML
     private Button buttonRe;
@@ -44,8 +47,15 @@ public class TabController implements Initializable {
 
     @FXML
     private Button buttongoBack;
+
     @FXML
     private Button buttongoFront;
+
+    @FXML
+    private AnchorPane tabContent;
+
+    @FXML
+    private WebView webView;
 
     private WebHistory history;
 
