@@ -123,8 +123,11 @@ public class TabController implements Initializable {
 
         Printer printer = Printer.getDefaultPrinter();
         PageLayout pageLayout = printer.createPageLayout(Paper.NA_LETTER, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
-        double scaleX = pageLayout.getPrintableWidth() / webView.getBoundsInParent().getWidth();
-        double scaleY = pageLayout.getPrintableHeight() / webView.getBoundsInParent().getHeight();
+
+        double scaleFactor = Math.max( webView.getBoundsInParent().getWidth(), webView.getBoundsInParent().getHeight() );
+
+        double scaleX = pageLayout.getPrintableWidth() / scaleFactor;
+        double scaleY = pageLayout.getPrintableHeight() / scaleFactor;
         webView.getTransforms().add(new Scale(scaleX, scaleY));
 
         PrinterJob job = PrinterJob.createPrinterJob();
@@ -134,8 +137,8 @@ public class TabController implements Initializable {
                 job.endJob();
             }
         }
-        double scaleX1 = pageLayout.getPrintableWidth() * webView.getBoundsInParent().getWidth();
-        double scaleY1 = pageLayout.getPrintableHeight() * webView.getBoundsInParent().getHeight();
+        double scaleX1 = scaleFactor / pageLayout.getPrintableWidth() ;
+        double scaleY1 = scaleFactor / pageLayout.getPrintableHeight();
         webView.getTransforms().add(new Scale(scaleX1, scaleY1));
     }
 
