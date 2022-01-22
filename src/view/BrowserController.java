@@ -1,28 +1,24 @@
-import javafx.collections.ObservableList;
-import javafx.concurrent.Worker;
+package view;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebHistory;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import metier.MetierBrowser;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 public class BrowserController implements Initializable {
 
     @FXML
     private TabPane tabPane;
+
+    private boolean isPrivate = false;
 
     private MetierBrowser metierBrowser = new MetierBrowser();
 
@@ -32,7 +28,7 @@ public class BrowserController implements Initializable {
         tab = tabPane.getTabs().get(0);
         AnchorPane root = null;
         try {
-            root = FXMLLoader.load( getClass().getResource("view/tabContent.fxml") );
+            root = FXMLLoader.load( getClass().getResource("/view/tabContent.fxml") );
             tab.setContent( root );
 
             metierBrowser.createHistory();
@@ -40,7 +36,6 @@ public class BrowserController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void addTab(){
@@ -52,16 +47,30 @@ public class BrowserController implements Initializable {
         }
 
         Tab tab = new Tab();
-        tab.setText( "New Tab" );
+        if ( isPrivate )
+            tab.setText( "New Private Tab" );
+        else
+            tab.setText( "New Tab" );
 
         tabPane.getTabs().add(tabPos, tab);
         tabPane.getSelectionModel().select(tabPos);
         try {
-            AnchorPane root = FXMLLoader.load( getClass().getResource("view/tabContent.fxml") );
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/view/tabContent.fxml" ));
+            AnchorPane root = fxmlLoader.load();
+            TabController controller = ( TabController ) fxmlLoader.getController();
+
+            if ( isPrivate )
+                controller.setPrivate(true);
+
             tab.setContent(root );
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+        addTab();
+        tabPane.getTabs().remove(0);
+    }
 }
