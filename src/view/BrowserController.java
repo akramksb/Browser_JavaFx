@@ -75,6 +75,48 @@ public class BrowserController implements Initializable {
         }
     }
 
+    public void addTabBookmark(){
+        int tabPos = tabPane.getTabs().size()-1;
+
+        Tab tab = new Tab();
+
+        tab.setText("Bookmark");
+
+
+        tabPane.getTabs().add(tabPos, tab);
+        tabPane.getSelectionModel().select(tabPos);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fxml/TabBookmark.fxml"));
+            AnchorPane root = fxmlLoader.load();
+            TabBookmarkController controller = ( TabBookmarkController ) fxmlLoader.getController();
+
+            tab.setContent(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addTabHistory(){
+        int tabPos = tabPane.getTabs().size()-1;
+
+        Tab tab = new Tab();
+
+        tab.setText("History");
+
+
+        tabPane.getTabs().add(tabPos, tab);
+        tabPane.getSelectionModel().select(tabPos);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fxml/TabHistory.fxml"));
+            AnchorPane root = fxmlLoader.load();
+
+
+            tab.setContent(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;
         addTab();
