@@ -52,6 +52,7 @@ public class TabController implements Initializable {
 
     private WebEngine engine;
     private float zoomScale;
+    private MetierBrowser metierBrowser = new MetierBrowser();
 
 
     @Override
@@ -78,6 +79,8 @@ public class TabController implements Initializable {
             if (newState == Worker.State.SUCCEEDED) {
                 // new page has loaded, process:
                 barRecherche.setText( engine.getLocation());
+                // save to history in broeser.db
+                metierBrowser.saveToHistory(engine.getLocation());
             }
         });
     }
