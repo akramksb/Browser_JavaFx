@@ -1,10 +1,14 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 
-public class BookmarkController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class BookmarkController implements Initializable {
 
     @FXML
     private Button BuutonSearch;
@@ -14,4 +18,10 @@ public class BookmarkController {
 
     @FXML
     private TableColumn<?, ?> urlBookmark;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

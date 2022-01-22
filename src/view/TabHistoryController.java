@@ -15,6 +15,10 @@ public class HistoryController {
         @FXML
         private TableColumn<?, ?> url;
 
+        public void serche(){
+
+        }
+
 
 
 }
