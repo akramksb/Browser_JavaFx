@@ -215,30 +215,6 @@ public class TabController implements Initializable {
         webView.getTransforms().add(new Scale(scaleX1, scaleY1));
     }
 
-    public void displayBookmark(){
-        try {
-//            showpage("Bookmark");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-//
-//    public void showpage(String fxml) {
-//        try {
-//            Parent parent = FXMLLoader.load(getClass().getResource("/view/fxml/" + fxml + ".fxml"));
-//            Stage stage = new Stage();
-//            Scene scene = new Scene(parent);
-//            stage.setScene(scene);
-//            stage.setResizable(false);
-//            stage.setAlwaysOnTop(true);
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.show();
-//        }catch (Exception e){
-//            System.out.println(e.getMessage());
-//
-//        }
-//    }
-
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;
     }

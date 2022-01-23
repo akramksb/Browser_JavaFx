@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MetierBrowser {
+
     public void createHistory(){
         try {
             Connection connection = SingletonConnexionDB.getConnection();
@@ -49,7 +50,7 @@ public class MetierBrowser {
         try {
             Connection connection = SingletonConnexionDB.getConnection();
             ArrayList<History> histories = new ArrayList<History>();
-            PreparedStatement preparedStatement = connection.prepareStatement( "SELECT * from 'history'" );
+            PreparedStatement preparedStatement = connection.prepareStatement( "SELECT * from history order by id DESC" );
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while ( resultSet.next() )
@@ -83,6 +84,22 @@ public class MetierBrowser {
         }
     }
 
+    public void createBookmark( String dbPath ){
+        try {
+            Connection connection = SingletonConnexionDB.getConnection( dbPath );
+
+            String sql = "CREATE TABLE if not exists 'bookmark' ( "+
+                    "'id'	INTEGER," +
+                    "'name'	TEXT, "+
+                    "'url'	TEXT," +
+                    "PRIMARY KEY('id' AUTOINCREMENT));";
+            Statement statement = connection.createStatement();
+            statement.execute( sql );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void saveToBookmark( String name, String url )
     {
         try {
@@ -98,26 +115,80 @@ public class MetierBrowser {
         }
     }
 
-    public ArrayList<Bookmark> getAllBookmark()
+    public ArrayList<Bookmark> getAllBookmarks()
     {
         try {
             Connection connection = SingletonConnexionDB.getConnection();
-            ArrayList<Bookmark> bookmarks = new ArrayList<Bookmark>();
-            PreparedStatement preparedStatement = connection.prepareStatement( "SELECT * from 'bookmark'" );
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while ( resultSet.next() )
-            {
-                bookmarks.add( new Bookmark( resultSet.getInt(1),
-                        resultSet.getString(2),
-                        resultSet.getString(3) ));
-            }
-            return bookmarks;
+            return getBookmarks(connection);
         }
         catch (Exception e)
         {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public ArrayList<Bookmark> getAllBookmarks(String dbPath )
+    {
+        try {
+            Connection connection = SingletonConnexionDB.getConnection( dbPath );
+            return getBookmarks(connection);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private ArrayList<Bookmark> getBookmarks(Connection connection) throws SQLException {
+        ArrayList<Bookmark> bookmarks = new ArrayList<Bookmark>();
+        PreparedStatement preparedStatement = connection.prepareStatement( "SELECT * from 'bookmark'" );
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while ( resultSet.next() )
+        {
+            bookmarks.add( new Bookmark( resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3) ));
+        }
+        return bookmarks;
+    }
+
+    public void exportBookmark( String dbPath )
+    {
+        try {
+            createBookmark( dbPath );
+            Connection connection = SingletonConnexionDB.getConnection(dbPath);
+            ArrayList<Bookmark> bookmarks = getAllBookmarks( );
+            for (Bookmark bookmark : bookmarks ) {
+                PreparedStatement preparedStatement = connection.prepareStatement( "INSERT INTO 'bookmark' ('name', 'url') VALUES (? , ?);" );
+                preparedStatement.setString(1, bookmark.getName());
+                preparedStatement.setString(2, bookmark.getUrl());
+
+                preparedStatement.executeUpdate();
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void importBookmark( String dbPath )
+    {
+        try {
+            ArrayList<Bookmark> bookmarks = getAllBookmarks( dbPath );
+            Connection connection = SingletonConnexionDB.getConnection();
+            for (Bookmark bookmark : bookmarks ) {
+                PreparedStatement preparedStatement = connection.prepareStatement( "INSERT INTO 'bookmark' ('name', 'url') VALUES (? , ?);" );
+                preparedStatement.setString(1, bookmark.getName());
+                preparedStatement.setString(2, bookmark.getUrl());
+
+                preparedStatement.executeUpdate();
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
